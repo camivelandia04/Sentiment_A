@@ -11,6 +11,9 @@ st.subheader("Por favor escribe en el campo de texto la frase que deseas analiza
 
 translator = Translator()
 
+with st.sidebar:
+    st.write("Instrucciones")
+
 with st.expander('Analizar texto'):
     text = st.text_input('Escribe por favor: ')
     if text:
