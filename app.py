@@ -20,6 +20,9 @@ with open('doggie.json') as source:
 with open('saddog.json') as source:
     saddog = json.load(source)
 
+with open('neutraldog.json') as source:
+    neutraldog = json.load(source)
+
 with st.sidebar:
     st.subheader("Polaridad y Subjetividad")
     ("""
@@ -44,17 +47,14 @@ with st.expander('Analizar texto'):
 
         x = round(blob.sentiment.polarity,2)
 
-        if x > 0.0 and x <= 1.0:
+        if x > 0:
             st.write('Es un sentimiento Positivo 😊')
-            
-            # animación positiva
             st.lottie(doggie, width=350)
 
-        elif x >= -1 and x <= 0:
+        elif x < 0:
             st.write('Es un sentimiento Negativo 😔')
-            
-            # animación negativa
             st.lottie(saddog, width=350)
 
         else:
             st.write('Es un sentimiento Neutral 😐')
+            st.lottie(neutraldog, width=350)
